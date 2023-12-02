@@ -1,0 +1,48 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+* {
+    font-family: 'Poppins', 'Arial', sans-serif;
+}
+
+
+:root {
+    --pana: #ff725e;
+    --pana-l: #fff1ef;
+    --cinza-l: #edf2f7;
+    --branco: #fff;
+
+    --laranja: #fc6520;    
+    --cinza: #333;
+    --preto: #1b1b1b;
+    --laranja-l: #ffe7d0;
+
+    /* --azul: primary */
+    --verde: #49c7a1;
+    --vermelho: #b83b5e;
+
+    --amarelo: #FAD961;
+    --laranja-d: #F76B1C;    
+}
+
+#forms-home {
+    width: 80%;
+    max-width: 100%;
+}
+
+.btn-custom {
+    width: 120px;
+}
+
+#task-manager,
+#my-table {
+    width: 60%;
+}
+
+.open-modal {
+    cursor: pointer;
+}
+
+.btn-custom-b {
+    width: 200px;
+}

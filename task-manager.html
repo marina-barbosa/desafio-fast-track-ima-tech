@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./assets/favicon-task.png" type="image/x-icon">
+    <title>Gerenciador de Tarefas</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="scripts/main.js"></script>  
+
+</head>
+
+<body>
+
+    <main class="vh-100">
+
+        <!-- HEADER -->
+        <div id="header">
+            <header class="p-3 text-bg-dark">
+                <div class="container">
+
+                    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+                        <h2 class="d-flex align-items-center mb-3 mb-md-0 me-md-auto fs-4 text-light greeting">Bem vindo(a)!
+                        </h2>
+
+                        <a href="/" class="text-end">
+                            <button id="logout" type="button"
+                                class="btn btn-outline-light me-2 btn-custom">Sair</button>
+                        </a>
+
+                    </div>
+                </div>
+            </header>
+        </div>
+
+
+        <!-- FORM -->
+        <div id="task-manager" class=" d-flex flex-column align-items-center justify-content-start mx-auto mb-5">
+            <div>
+                <h1 class="my-5">Gerenciador de tarefas</h1>
+            </div>
+            <form class="row g-3">
+                <div class="col-12">
+                    <input type="text" class="form-control" id="title-task" placeholder="Tarefa">
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Data início&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <input type="date" class="form-control" id="start-date">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Hora início&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        <input type="time" class="form-control" id="start-time">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Data término</span>
+                        <input type="date" class="form-control" id="end-date">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Hora término</span>
+                        <input type="time" class="form-control" id="end-time">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <textarea class="form-control" placeholder="Descrição" rows="3" id="description"></textarea>
+                </div>
+
+                <div id="btn-create" class="col-12 d-flex justify-content-center">
+                    <a href="#" id="createTaskButton" class="btn btn-primary btn-custom">Criar Tarefa</a>
+                </div>
+
+                <div id="btns" class="col-12 d-flex justify-content-center gap-3 d-none">
+                    <a href="#" type="submit" id="update" class="btn btn-primary btn-custom-b">Alterar tarefa</a>
+                    <a href="#" type="submit" id="delete" class="btn btn-primary btn-custom-b">Excluir tarefa</a>
+                    <a href="#" id="mark" class="btn btn-primary btn-custom-b"></a>
+                    <a href="task-manager.html" type="submit" class="btn btn-primary btn-custom-b">Cancelar</a>
+                </div>
+
+            </form>
+        </div>
+
+
+        <!-- TABLE -->
+        <div class="d-flex justify-content-center">
+            <div id="my-table" class="table-responsive small">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Tarefa</th>
+                            <th scope="col">Início</th>
+                            <th scope="col">Término</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Alterar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+            </div>
+        </div> 
+        <!-- MODAL -->
+        <div id="modalWindow" class="modal fade">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"> 
+                <div class="modal-content">
+        
+                    <div class="modal-header">
+                        <h3 class="modal-title">Título da Tarefa</h3>
+                        <button type="button" class="btn btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+        
+                    <div class="modal-body">
+                        <p class="modal-body-p">Descreva sua tarefa aqui...</p>
+                        
+                    </div>
+        
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+        
+        
+        
+                </div>
+            </div>
+        </div>
+
+    </main>    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
