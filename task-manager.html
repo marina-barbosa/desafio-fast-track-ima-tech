@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/manager.css">
     <script src="scripts/main.js"></script>  
 
 </head>
@@ -52,26 +53,22 @@
                 </div>
                 <div class="col-md-6">
                     <div class="input-group mb-3">
-                        <span class="input-group-text">Data início&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <input type="date" class="form-control" id="start-date">
+                        <input type="text" class="form-control" id="start-date" placeholder="Data início" aria-describedby="data inicio" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">                        
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="input-group mb-3">
-                        <span class="input-group-text">Hora início&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <input type="time" class="form-control" id="start-time">
+                        <input type="text" class="form-control" id="start-time" placeholder="Hora início" aria-describedby="hora início" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}">                        
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">                        
+                        <input type="text" class="form-control" id="end-date" placeholder="Data término" aria-describedby="data término" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="input-group mb-3">
-                        <span class="input-group-text">Data término</span>
-                        <input type="date" class="form-control" id="end-date">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Hora término</span>
-                        <input type="time" class="form-control" id="end-time">
+                        <input type="text" class="form-control" id="end-time" placeholder="Hora término" aria-describedby="hora término" onfocus="(this.type='time')" onblur="if(this.value==''){this.type='text'}">
                     </div>
                 </div>
                 <div class="col-12">
@@ -110,6 +107,7 @@
                 </table>
             </div>
         </div> 
+
         <!-- MODAL -->
         <div id="modalWindow" class="modal fade">
             <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"> 
@@ -121,12 +119,12 @@
                     </div>
         
                     <div class="modal-body">
-                        <p class="modal-body-p">Descreva sua tarefa aqui...</p>
+                        <p class="modal-body-p text-center">Descreva sua tarefa aqui...</p>
                         
                     </div>
         
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                     </div>
         
         

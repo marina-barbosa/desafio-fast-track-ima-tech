@@ -1,0 +1,45 @@
+body {
+    background: var(--cinza);
+    color: var(--laranja);
+}
+
+#task-manager,
+#my-table {
+    width: 60%;
+}
+
+.open-modal {
+    cursor: pointer;
+}
+
+
+.btn-custom {
+    width: 130px;
+    background-color: var(--laranja);
+    border-color: var(--laranja);
+}
+
+.btn-custom:hover {
+    background-color: var(--pana);
+    border-color: var(--laranja-l);
+    color: #222;
+}
+
+.btn-custom-b {
+    width: 230px;
+    background-color: var(--laranja);
+    border-color: var(--laranja);
+}
+
+.btn-custom-b:hover {
+    background-color: var(--pana);
+    border-color: var(--laranja-l);
+    color: #222;
+}
+
+
+@media screen and (max-width: 990px) {}
+
+@media screen and (min-width: 990px) and (max-width: 1350px) {}
+
+@media screen and (min-width: 1351px) {}

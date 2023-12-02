@@ -13,10 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
     elementScout('#update', updateTask);
     elementScout('#mark', toggleDone);
     elementScout('.greeting', setGreeting());
-    elementScout('#table-body', fillTable(), changeStatusColor());
-    elementScout('#logout', limparStorage);
+    elementScout('#logout', clearStorage);
 
-    
+    const tableBody = document.querySelectorAll('#table-body');
+
+    if (tableBody) {
+        fillTable();
+        changeStatusColor();
+    }
+
+
     const openModal = document.querySelectorAll('.open-modal');
 
     if (openModal) {
@@ -28,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 fillModal()
             });
         });
-    } 
+    }
 
     const buttonsUpdate = document.querySelectorAll('.btn-update');
 
@@ -60,7 +66,7 @@ const elementScout = (elementId, ...eventHandlers) => {
     if (element) {
 
         const tagName = element.tagName.toLowerCase();
-        if (tagName !== 'button' && tagName !== 'a') {
+        if (tagName !== 'button' || tagName !== 'a') {
             eventHandlers.forEach(handler => {
                 handler;
             });
@@ -72,16 +78,10 @@ const elementScout = (elementId, ...eventHandlers) => {
     }
 }
 
-const getCurrentUser = () => {
-    const emailSession = sessionStorage.getItem('emailSession');
-    const userData = JSON.parse(localStorage.getItem(emailSession));
-    return userData;
-}
+const clearLocalStorage = false;
+const clearStorage = () => {
 
-const limparLocalStorage = false;
-const limparStorage = () => {
-
-    if (limparLocalStorage) {
+    if (clearLocalStorage) {
 
         const keys = Object.keys(localStorage);
 
@@ -162,8 +162,9 @@ const signIn = () => {
 // #############################
 
 const createTask = () => {
-    
-    const userData = getCurrentUser();
+
+    const emailSession = sessionStorage.getItem('emailSession');
+    const userData = JSON.parse(localStorage.getItem(emailSession));
 
     const title = document.querySelector('#title-task').value.trim();
     const startDate = document.querySelector('#start-date').value || getCurrentDate();
@@ -187,6 +188,8 @@ const createTask = () => {
         status: "Analisando",
         done: false,
     };
+
+
     userData.tasks.push(newTask);
     localStorage.setItem(emailSession, JSON.stringify(userData));
 
@@ -194,12 +197,13 @@ const createTask = () => {
 }
 
 const setCurrentTask = (id) => {
-    sessionStorage.setItem('currentTask', id);    
+    sessionStorage.setItem('currentTask', id);
 }
 
 const updateTask = () => {
-    
-    const userData =  getCurrentUser();
+
+    const emailSession = sessionStorage.getItem('emailSession');
+    const userData = JSON.parse(localStorage.getItem(emailSession));
     const index = sessionStorage.getItem('currentTask');
 
     const title = document.querySelector('#title-task').value;
@@ -228,7 +232,8 @@ const updateTask = () => {
 }
 
 const deleteTask = () => {
-    const userData =  getCurrentUser();
+    const emailSession = sessionStorage.getItem('emailSession');
+    const userData = JSON.parse(localStorage.getItem(emailSession));
     const index = sessionStorage.getItem('currentTask');
 
     userData.tasks.splice(index, 1);
@@ -239,21 +244,27 @@ const deleteTask = () => {
 }
 
 const toggleDone = () => {
-    const userData =  getCurrentUser();
+    const emailSession = sessionStorage.getItem('emailSession');
+    const userData = JSON.parse(localStorage.getItem(emailSession));
     const index = sessionStorage.getItem('currentTask');
 
     userData.tasks[index].done = !userData.tasks[index].done;
 
     localStorage.setItem(emailSession, JSON.stringify(userData));
 
+    //toggleDoneBtn(); ///////////
     location.reload();
 }
 
 const toggleDoneBtn = () => {
-    const userData =  getCurrentUser();
+    const emailSession = sessionStorage.getItem('emailSession');
+    const userData = JSON.parse(localStorage.getItem(emailSession));
+
     const index = sessionStorage.getItem('currentTask');
+    console.log(userData.tasks[index].done)
 
     const markButton = document.querySelector('#mark');
+    console.log(markButton.textContent)
 
     if (userData.tasks[index].done) {
         markButton.textContent = 'Marcar não realizada';
@@ -265,7 +276,8 @@ const toggleDoneBtn = () => {
 }
 
 const updateTaskStatus = (index) => {
-    const userData =  getCurrentUser();
+    const emailSession = sessionStorage.getItem('emailSession');
+    const userData = JSON.parse(localStorage.getItem(emailSession));
 
     const { startDate, startTime, endDate, endTime } = userData.tasks[index];
 
@@ -343,7 +355,8 @@ const getCurrentTime = () => {
 
 const setGreeting = () => {
 
-    const userData =  getCurrentUser();
+    const emailSession = sessionStorage.getItem('emailSession');
+    const userData = JSON.parse(localStorage.getItem(emailSession));
     const elementoH2 = document.querySelector('.greeting');
 
     const now = new Date();
@@ -377,7 +390,8 @@ const setGreeting = () => {
 
 const fillTable = () => {
     const tableBody = document.querySelector('#table-body');
-    const userData =  getCurrentUser();
+    const emailSession = sessionStorage.getItem('emailSession');
+    const userData = JSON.parse(localStorage.getItem(emailSession));
 
     if (userData && userData.tasks.length > 0) {
 
@@ -407,7 +421,8 @@ const fillTable = () => {
 }
 
 const fillModal = () => {
-    const userData =  getCurrentUser();
+    const emailSession = sessionStorage.getItem('emailSession');
+    const userData = JSON.parse(localStorage.getItem(emailSession));
     const index = sessionStorage.getItem('currentTask');
 
     const { title, description } = userData.tasks[index];
@@ -420,9 +435,10 @@ const fillModal = () => {
 
 }
 
-const fillForm = (id) => {    
+const fillForm = (id) => {
 
-    const userData =  getCurrentUser();
+    const emailSession = sessionStorage.getItem('emailSession');
+    const userData = JSON.parse(localStorage.getItem(emailSession));
 
     const {
         title,

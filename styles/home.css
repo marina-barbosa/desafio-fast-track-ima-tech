@@ -1,0 +1,49 @@
+body {
+    background: var(--cinza);
+    color: var(--laranja);
+}
+
+/* .home {
+    padding-left: 15rem;
+    padding-right: 15rem;
+} */
+
+#signUpButton,
+#signInButton {
+    width: 100%;
+}
+
+.btn-custom {
+    background-color: var(--laranja);
+    border-color: var(--laranja);
+}
+
+.btn-custom:hover {
+    background-color: var(--pana);
+    border-color: var(--laranja-l);
+}
+
+.bi,
+.rights {
+    color: var(--laranja) !important;
+}
+
+
+
+@media screen and (max-width: 990px) {
+    #img {
+        display: none !important;        
+    }
+}
+
+@media screen and (min-width: 990px) and (max-width: 1350px) {
+    #img {
+        padding-right: 5rem !important;
+    }
+}
+
+@media screen and (min-width: 1351px) {    
+    #forms-home {
+        padding-left: 15% !important;
+    }
+}
