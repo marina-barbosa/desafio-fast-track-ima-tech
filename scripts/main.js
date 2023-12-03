@@ -46,10 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 setCurrentTask(clickedRowId);
                 fillForm(clickedRowId);
                 displayButtons();
+                toggleDoneBtn();
             });
         });
 
-        toggleDoneBtn();
     }
 })
 
