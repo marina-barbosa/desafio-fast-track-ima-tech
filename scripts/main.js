@@ -6,6 +6,18 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    document.querySelectorAll('.toggle-password-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            let inputPassword = btn.previousElementSibling;
+    
+            if (inputPassword.getAttribute('type') === 'password') {
+                inputPassword.setAttribute('type', 'text');
+            } else {
+                inputPassword.setAttribute('type', 'password');
+            }
+        });
+    });
+
     elementScout('#signUpButton', signUp);
     elementScout('#signInButton', signIn);
     elementScout('#createTaskButton', createTask);
