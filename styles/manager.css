@@ -5,7 +5,7 @@ body {
 
 #task-manager,
 #my-table {
-    width: 60%;
+    width: 70%;
 }
 
 .open-modal {
@@ -37,9 +37,91 @@ body {
     color: #222;
 }
 
+#delete {
+    background-color: var(--vermelho);
+    border-color: var(--vermelho);
+}
 
-@media screen and (max-width: 990px) {}
+#delete:hover {
+    background-color: var(--vermelho-l);
+    border-color: var(--laranja-l);
+}
 
-@media screen and (min-width: 990px) and (max-width: 1350px) {}
+.btn-mark {
+    background-color: var(--verde-l);
+    border-color: var(--verde-l);
+}
 
-@media screen and (min-width: 1351px) {}
+.btn-mark:hover {
+    background-color: var(--verde);
+    border-color: var(--laranja-l);
+}
+
+.btn-gray {
+    background-color: #666;
+    border-color: #666;
+}
+
+.btn-gray:hover {
+    background-color: #666;
+    border-color: #999;
+}
+
+td.open-modal .text-container {
+    transition: transform 0.3s ease;
+}
+
+td.open-modal:hover .text-container {
+    transform: translateX(10px);
+}
+
+
+.table td:not(:first-child) {
+    text-align: center;
+}
+
+.table th:first-child,
+.table td:first-child {
+    width: 20%;
+    text-align: left;
+    font-weight: bold;
+    padding-left: 16px;
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+}
+
+
+
+@media screen and (max-width: 990px) {
+    #btns {
+        justify-content: center;
+    }
+
+    #btns>a {
+        margin-bottom: 5px;
+    }
+}
+
+@media screen and (min-width: 990px) and (max-width: 1350px) {
+    #task-manager {
+        width: 60%;
+    }
+
+    #my-table {
+        width: 80%;
+    }
+
+}
+
+@media screen and (min-width: 1351px) {
+    #task-manager {
+        width: 40%;
+    }
+
+    #my-table {
+        width: 60%;
+    }
+}

@@ -43,13 +43,13 @@
 
 
         <!-- FORM -->
-        <div id="task-manager" class=" d-flex flex-column align-items-center justify-content-start mx-auto mb-5">
+        <div id="task-manager" class=" d-flex flex-column align-items-center justify-content-start mx-auto mb-4">
             <div>
                 <h1 class="my-5">Gerenciador de tarefas</h1>
             </div>
-            <form class="row g-3">
+            <form class="row">
                 <div id="liveAlertPlaceholder"></div>
-                <div class="col-12">
+                <div class="col-12 mb-3">
                     <input type="text" class="form-control" id="title-task" placeholder="Tarefa">
                 </div>
                 <div class="col-md-6">
@@ -76,14 +76,14 @@
                     <textarea class="form-control" placeholder="Descrição" rows="3" id="description"></textarea>
                 </div>
 
-                <div id="btn-create" class="col-12 d-flex justify-content-center">
-                    <a href="#" id="createTaskButton" class="btn btn-outline-light btn-custom">Criar Tarefa</a>
+                <div id="btn-create" class="col-12 d-flex justify-content-center mt-4">
+                    <a href="#" id="createTaskButton" class="btn btn-outline-light btn-custom-b">Criar Tarefa</a>
                 </div>
 
-                <div id="btns" class="col-12 d-flex justify-content-center gap-3 d-none">
+                <div id="btns" class="col-12 d-flex justify-content-center gap-3 d-none mt-4">
                     <a href="#" type="submit" id="update" class="btn btn-outline-light btn-custom-b">Alterar tarefa</a>
                     <a href="#" type="submit" id="delete" class="btn btn-outline-light btn-custom-b">Excluir tarefa</a>
-                    <a href="#" id="mark" class="btn btn-outline-light btn-custom-b">Marcar como realizada</a>
+                    <a href="#" id="mark" class="btn btn-outline-light btn-custom-b btn-mark">Marcar como realizada</a>
                     <a href="task-manager.html" type="submit" class="btn btn-outline-light btn-custom-b">Cancelar</a>
                 </div>
 

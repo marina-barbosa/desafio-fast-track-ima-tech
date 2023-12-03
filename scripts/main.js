@@ -194,7 +194,7 @@ const createTask = () => {
     localStorage.setItem(emailSession, JSON.stringify(userData));
 
     location.reload();
-    alertDiv('Tarefa criada com sucesso','success')
+    alertDiv('Tarefa criada com sucesso', 'success')
 }
 
 const setCurrentTask = (id) => {
@@ -235,7 +235,7 @@ const updateTask = () => {
     localStorage.setItem(emailSession, JSON.stringify(userData));
 
     location.reload();
-    window.onload = function() {
+    window.onload = function () {
         alertDiv('Tarefa atualizada com sucesso', 'success');
     };
 }
@@ -250,7 +250,7 @@ const deleteTask = () => {
     localStorage.setItem(emailSession, JSON.stringify(userData));
 
     location.reload();
-    alertDiv('Tarefa excluída com sucesso','danger');
+    alertDiv('Tarefa excluída com sucesso', 'danger');
 }
 
 const toggleDone = () => {
@@ -278,10 +278,12 @@ const toggleDoneBtn = () => {
 
     if (userData.tasks[index].done) {
         markButton.textContent = 'Marcar não realizada';
+        markButton.classList.add('btn-gray');
     }
 
     if (!userData.tasks[index].done) {
         markButton.textContent = 'Marcar como realizada';
+        markButton.classList.remove('btn-gray');
     }
 }
 
@@ -410,10 +412,13 @@ const fillTable = () => {
             const newRow = document.createElement('tr');
             newRow.id = `${index}`;
             newRow.innerHTML = `
-                <td class="open-modal cursor-pointer" data-bs-toggle="modal" data-bs-target="#modalWindow">${task.title}</td>                
+                <td class="open-modal cursor-pointer" data-bs-toggle="modal" data-bs-target="#modalWindow">
+                    <div class="text-container">
+                        <strong>${task.title}</strong>
+                    </div></td>                
                 <td>${formatDate(task.startDate)} às ${task.startTime}</td>
                 <td>${formatDate(task.endDate)} às ${task.endTime}</td>
-                <td>${task.done ? 'Realizada' : updateTaskStatus(index)}</td>
+                <td><strong>${task.done ? 'Realizada' : updateTaskStatus(index)}</strong></td>
                 <td><a href="#" class="btn btn-outline-light btn-sm btn-custom btn-update">Alterar</a></td>
             `;
             tableBody.appendChild(newRow);
@@ -502,7 +507,7 @@ const changeStatusColor = () => {
     });
 }
 
-const alertDiv = (message,type) => {
+const alertDiv = (message, type) => {
     const alertPlaceholder = document.querySelector('#liveAlertPlaceholder');
 
     if (alertPlaceholder) {
@@ -511,7 +516,7 @@ const alertDiv = (message,type) => {
     <div class="alert alert-${type} alert-dismissible" role="alert">
       ${message}
     </div> `;
-    
+
         alertPlaceholder.appendChild(wrapper);
 
         setTimeout(() => {
