@@ -173,8 +173,8 @@ const createTask = () => {
     const endTime = document.querySelector('#end-time').value || '23:59';
     const description = document.querySelector('#description').value.trim();
 
-    if (description === '') {
-        alert('Os campo descrição é obrigatório.');
+    if (title === '') {
+        alert('O título é obrigatório.');
         return;
     }
 
@@ -194,6 +194,7 @@ const createTask = () => {
     localStorage.setItem(emailSession, JSON.stringify(userData));
 
     location.reload();
+    alertDiv('Tarefa criada com sucesso','success')
 }
 
 const setCurrentTask = (id) => {
@@ -213,6 +214,11 @@ const updateTask = () => {
     const endTime = document.querySelector('#end-time').value;
     const description = document.querySelector('#description').value;
 
+    if (title === '') {
+        alert('O título é obrigatório.');
+        return;
+    }
+
     const newTask = {
         title: title,
         startDate,
@@ -229,6 +235,7 @@ const updateTask = () => {
     localStorage.setItem(emailSession, JSON.stringify(userData));
 
     location.reload();
+    alertDiv('Tarefa atualizada com sucesso','success')
 }
 
 const deleteTask = () => {
@@ -241,6 +248,7 @@ const deleteTask = () => {
     localStorage.setItem(emailSession, JSON.stringify(userData));
 
     location.reload();
+    alertDiv('Tarefa excluída com sucesso','danger');
 }
 
 const toggleDone = () => {
@@ -318,7 +326,7 @@ const getCurrentDateTime = () => {
     return `${year}-${month}-${day} ${hours}:${minutes}`;
 }
 
-const formatarData = (data) => {
+const formatDate = (data) => {
     if (data) {
         const partes = data.split('-');
         const dia = partes[2];
@@ -401,8 +409,8 @@ const fillTable = () => {
             newRow.id = `${index}`;
             newRow.innerHTML = `
                 <td class="open-modal cursor-pointer" data-bs-toggle="modal" data-bs-target="#modalWindow">${task.title}</td>                
-                <td>${formatarData(task.startDate)} às ${task.startTime}</td>
-                <td>${formatarData(task.endDate)} às ${task.endTime}</td>
+                <td>${formatDate(task.startDate)} às ${task.startTime}</td>
+                <td>${formatDate(task.endDate)} às ${task.endTime}</td>
                 <td>${task.done ? 'Realizada' : updateTaskStatus(index)}</td>
                 <td><a href="#" class="btn btn-primary btn-sm btn-custom btn-update">Alterar</a></td>
             `;
@@ -490,6 +498,24 @@ const changeStatusColor = () => {
                 break;
         }
     });
+}
+
+const alertDiv = (message,type) => {
+    const alertPlaceholder = document.querySelector('#liveAlertPlaceholder');
+
+    if (alertPlaceholder) {
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = `
+    <div class="alert alert-${type} alert-dismissible" role="alert">
+      ${message}
+    </div> `;
+    
+        alertPlaceholder.appendChild(wrapper);
+
+        setTimeout(() => {
+            wrapper.remove();
+        }, 5000);
+    };
 }
 
 
