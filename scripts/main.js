@@ -235,7 +235,9 @@ const updateTask = () => {
     localStorage.setItem(emailSession, JSON.stringify(userData));
 
     location.reload();
-    alertDiv('Tarefa atualizada com sucesso','success')
+    window.onload = function() {
+        alertDiv('Tarefa atualizada com sucesso', 'success');
+    };
 }
 
 const deleteTask = () => {
@@ -412,7 +414,7 @@ const fillTable = () => {
                 <td>${formatDate(task.startDate)} às ${task.startTime}</td>
                 <td>${formatDate(task.endDate)} às ${task.endTime}</td>
                 <td>${task.done ? 'Realizada' : updateTaskStatus(index)}</td>
-                <td><a href="#" class="btn btn-primary btn-sm btn-custom btn-update">Alterar</a></td>
+                <td><a href="#" class="btn btn-outline-light btn-sm btn-custom btn-update">Alterar</a></td>
             `;
             tableBody.appendChild(newRow);
 
