@@ -142,6 +142,7 @@ td.open-modal:hover .text-container {
     #task-manager {
         width: 40%;
         min-width: 800px;
+        max-width: 900px;
     }
 
     #my-table {        

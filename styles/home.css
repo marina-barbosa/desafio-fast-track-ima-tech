@@ -1,6 +1,10 @@
-body {
+body {    
     background: var(--cinza);
     color: var(--laranja);
+}
+
+main{
+    max-width: 1981px;
 }
 
 /* .home {
