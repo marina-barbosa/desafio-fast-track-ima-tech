@@ -261,8 +261,7 @@ const toggleDone = () => {
     userData.tasks[index].done = !userData.tasks[index].done;
 
     localStorage.setItem(emailSession, JSON.stringify(userData));
-
-    //toggleDoneBtn(); ///////////
+    
     location.reload();
 }
 
@@ -277,12 +276,12 @@ const toggleDoneBtn = () => {
     console.log(markButton.textContent)
 
     if (userData.tasks[index].done) {
-        markButton.textContent = 'Marcar não realizada';
+        markButton.textContent = 'Desmarcar';
         markButton.classList.add('btn-gray');
     }
 
     if (!userData.tasks[index].done) {
-        markButton.textContent = 'Marcar como realizada';
+        markButton.textContent = 'Marcar realizada';
         markButton.classList.remove('btn-gray');
     }
 }

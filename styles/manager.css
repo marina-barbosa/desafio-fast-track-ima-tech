@@ -3,9 +3,12 @@ body {
     color: var(--laranja);
 }
 
-#task-manager,
-#my-table {
+#task-manager{
     width: 70%;
+}
+
+#my-table {
+    width: 100%;
 }
 
 .open-modal {
@@ -26,7 +29,7 @@ body {
 }
 
 .btn-custom-b {
-    width: 230px;
+    width: 165px;
     background-color: var(--laranja);
     border-color: var(--laranja);
 }
@@ -67,6 +70,10 @@ body {
     border-color: #999;
 }
 
+.btn-update {
+    width: 70px;
+}
+
 td.open-modal .text-container {
     transition: transform 0.3s ease;
 }
@@ -76,13 +83,13 @@ td.open-modal:hover .text-container {
 }
 
 
+.table th:not(:first-child),
 .table td:not(:first-child) {
     text-align: center;
 }
 
 .table th:first-child,
-.table td:first-child {
-    width: 20%;
+.table td:first-child {    
     text-align: left;
     font-weight: bold;
     padding-left: 16px;
@@ -96,6 +103,20 @@ td.open-modal:hover .text-container {
 
 
 @media screen and (max-width: 990px) {
+
+    #task-manager{
+        width: 90%;
+        max-width: 500px;
+    }
+    
+    #my-table {
+        width: 100%;
+    }
+
+    .btn-update {
+        width: 70px;
+    }
+
     #btns {
         justify-content: center;
     }
@@ -108,10 +129,11 @@ td.open-modal:hover .text-container {
 @media screen and (min-width: 990px) and (max-width: 1350px) {
     #task-manager {
         width: 60%;
+        min-width: 685px;
     }
 
     #my-table {
-        width: 80%;
+        width: 90%;
     }
 
 }
@@ -119,9 +141,10 @@ td.open-modal:hover .text-container {
 @media screen and (min-width: 1351px) {
     #task-manager {
         width: 40%;
+        min-width: 800px;
     }
 
-    #my-table {
-        width: 60%;
+    #my-table {        
+        max-width: 1090px;
     }
 }
