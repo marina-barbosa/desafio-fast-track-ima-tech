@@ -258,14 +258,21 @@ const updateTask = () => {
 const deleteTask = () => {
     const emailSession = sessionStorage.getItem('emailSession');
     const userData = JSON.parse(localStorage.getItem(emailSession));
-    const index = sessionStorage.getItem('currentTask');
+    const index = sessionStorage.getItem('currentTask');    
 
     userData.tasks.splice(index, 1);
 
     localStorage.setItem(emailSession, JSON.stringify(userData));
 
-    location.reload();
-    alertDiv('Tarefa excluída com sucesso', 'danger');
+    const feedback = document.querySelector('#feedback');
+
+    feedback.classList.remove('d-none');
+    feedback.classList.add('alert-danger');
+    feedback.innerHTML = 'Tarefa excluída com sucesso.';
+
+    setTimeout(() => {
+        location.reload();
+    }, 2000);
 }
 
 const toggleDone = () => {

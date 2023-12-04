@@ -7,7 +7,7 @@ body {
     width: 70%;
 }
 
-#my-table {
+.my-table {
     width: 100%;
 }
 
@@ -114,7 +114,7 @@ td.open-modal:hover .text-container {
         max-width: 500px;
     }
     
-    #my-table {
+    .my-table {
         width: 100%;
     }
 
@@ -137,7 +137,7 @@ td.open-modal:hover .text-container {
         min-width: 685px;
     }
 
-    #my-table {
+    .my-table {
         width: 90%;
     }
 
@@ -150,7 +150,7 @@ td.open-modal:hover .text-container {
         max-width: 900px;
     }
 
-    #my-table {        
+    .my-table {        
         max-width: 1090px;
     }
 }
