@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.toggle-password-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             let inputPassword = btn.previousElementSibling;
-    
+
             if (inputPassword.getAttribute('type') === 'password') {
                 inputPassword.setAttribute('type', 'text');
             } else {
@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    elementScout('#signUpButton', signUp);
-    elementScout('#signInButton', signIn);
+    //elementScout('#signUpButton', signUp);
+    //elementScout('#signInButton', signIn);
     elementScout('#createTaskButton', createTask);
     elementScout('#delete', deleteTask);
     elementScout('#update', updateTask);
@@ -119,51 +119,65 @@ const clearStorage = () => {
 //           LOGIN
 // #############################
 
-const signUp = () => {
+// const signUp = () => {
+//     const name = document.querySelector('#signupName').value;
+//     const email = document.querySelector('#signupEmail').value;
+//     const password = document.querySelector('#signupPassword').value;
+
+//     if (localStorage.getItem(email)) {
+//         alert('Este e-mail já está sendo usado.');
+//         return;
+//     }
+
+//     const newUser = {
+//         name: name,
+//         email: email,
+//         password: password,
+//         tasks: []
+//     };
+
+//     localStorage.setItem(email, JSON.stringify(newUser));
+
+//     sessionStorage.setItem('emailSession', email);
+
+//     alert('Conta criada com sucesso!');
+//     window.location.href = 'task-manager.html';
+// }
+
+// const signIn = () => {
+//     const email = document.querySelector('#loginEmail').value;
+//     const password = document.querySelector('#loginPassword').value;
+
+//     if (!localStorage.getItem(email)) {
+//         alert('E-mail não cadastrado.');
+//         return;
+//     }
+
+//     const userData = JSON.parse(localStorage.getItem(email));
+//     if (userData.password !== password) {
+//         alert('Senha incorreta.');
+//         return;
+//     }
+
+//     sessionStorage.setItem('emailSession', email);
+
+//     window.location.href = 'task-manager.html';
+// }
+
+
+
+
+
+
+// #############################
+//          VALIDATION
+// #############################
+
+const validation = () => {
     const name = document.querySelector('#signupName').value;
     const email = document.querySelector('#signupEmail').value;
     const password = document.querySelector('#signupPassword').value;
-
-    if (localStorage.getItem(email)) {
-        alert('Este e-mail já está sendo usado.');
-        return;
-    }
-
-    const newUser = {
-        name: name,
-        email: email,
-        password: password,
-        tasks: []
-    };
-
-    localStorage.setItem(email, JSON.stringify(newUser));
-
-    sessionStorage.setItem('emailSession', email);
-
-    alert('Conta criada com sucesso!');
-    window.location.href = 'task-manager.html';
 }
-
-const signIn = () => {
-    const email = document.querySelector('#loginEmail').value;
-    const password = document.querySelector('#loginPassword').value;
-
-    if (!localStorage.getItem(email)) {
-        alert('E-mail não cadastrado.');
-        return;
-    }
-
-    const userData = JSON.parse(localStorage.getItem(email));
-    if (userData.password !== password) {
-        alert('Senha incorreta.');
-        return;
-    }
-
-    sessionStorage.setItem('emailSession', email);
-
-    window.location.href = 'task-manager.html';
-}
-
 
 
 
@@ -273,7 +287,7 @@ const toggleDone = () => {
     userData.tasks[index].done = !userData.tasks[index].done;
 
     localStorage.setItem(emailSession, JSON.stringify(userData));
-    
+
     location.reload();
 }
 

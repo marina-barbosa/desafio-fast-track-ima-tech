@@ -74,6 +74,11 @@ body {
     width: 70px;
 }
 
+th {
+    background-color: #212529 !important;
+    color: var(--pana-l) !important;
+}
+
 td.open-modal .text-container {
     transition: transform 0.3s ease;
 }
