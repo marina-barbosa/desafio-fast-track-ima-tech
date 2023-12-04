@@ -38,7 +38,7 @@ inputName.addEventListener('keyup', () => {
     }
 })
 inputEmail.addEventListener('keyup', () => {
-    if (inputEmail.value.trim().length < 5) {
+    if (!checkEmail(inputEmail.value.trim())) {
         inputEmail.style.border = '1px solid red';
         inputEmail.style.boxShadow = '0 0 5px red';
         validEmail = false;
@@ -61,10 +61,11 @@ inputPass.addEventListener('keyup', () => {
 })
 
 function checkEmail(email) {
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
-      email
-    );
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+    return emailPattern.test(email);
 }
+
+
 
 
 
@@ -116,7 +117,7 @@ const signUp = () => {
 // #############################
 
 loginEmail.addEventListener('keyup', () => {
-    if (loginEmail.value.trim().length < 5) {
+    if (!checkEmail(loginEmail.value.trim())) {
         loginEmail.style.border = '1px solid red';
         loginEmail.style.boxShadow = '0 0 5px red';
         validLoginEmail = false;
@@ -154,7 +155,7 @@ const signIn = () => {
         feedbackSignIn.innerHTML = 'Por favor, insira dados válidos.';        
         return;
     }
-
+    
     if (!localStorage.getItem(loginEmail.value)) {
         loginEmail.style.border = '1px solid red';
         loginEmail.style.boxShadow = '0 0 5px red';
