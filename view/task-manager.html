@@ -102,9 +102,20 @@
             </form>
         </div>
 
-        <!-- SEARCH -->
-        </div class="d-flex justify-content-center">
-        <input type="text" class="form-control mx-auto mb-2  my-table" id="input-search" placeholder="Pesquisar">
+        </div class="d-flex justify-content-center ">
+        <div class="my-table mx-auto mb-2 d-flex gap-1">
+            <!-- SEARCH -->
+            <input type="text" class="form-control" id="input-search" placeholder="Pesquisar">
+            <!-- FILTER -->
+            <select class="form-select w-25" id="select-filter" aria-label="Default select example">
+                <option selected>Filtro</option>
+                <option value="Pendente">Pendente</option>
+                <option value="Em andamento">Em andamento</option>
+                <option value="Em atraso">Em atraso</option>
+                <option value="Realizada">Realizada</option>
+                <option value="Todas">Todas</option>
+            </select>
+        </div>
         </div>
 
 
@@ -160,6 +171,7 @@
 
     <script src="../scripts/main.js"></script>
     <script src="../scripts/search.js"></script>
+    <script src="../scripts/filter.js"></script>
 
 </body>
 

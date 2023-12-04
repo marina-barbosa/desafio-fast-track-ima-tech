@@ -325,7 +325,7 @@ const updateTaskStatus = (index) => {
     } else if (currentDate >= startDateTime && currentDate <= endDateTime) {
         status = "Em andamento";
     } else if (currentDate > endDateTime) {
-        status = "Em Atraso";
+        status = "Em atraso";
     }
 
     return status;
@@ -532,7 +532,7 @@ const changeStatusColor = () => {
             case 'Em andamento':
                 cell.classList.add('text-primary');
                 break;
-            case 'Em Atraso':
+            case 'Em atraso':
                 cell.classList.add('text-danger');
                 break;
             default:
