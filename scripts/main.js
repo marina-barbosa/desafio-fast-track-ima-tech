@@ -18,8 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    //elementScout('#signUpButton', signUp);
-    //elementScout('#signInButton', signIn);
+
     elementScout('#createTaskButton', createTask);
     elementScout('#delete', deleteTask);
     elementScout('#update', updateTask);
@@ -115,70 +114,6 @@ const clearStorage = () => {
 
 
 
-// #############################
-//           LOGIN
-// #############################
-
-// const signUp = () => {
-//     const name = document.querySelector('#signupName').value;
-//     const email = document.querySelector('#signupEmail').value;
-//     const password = document.querySelector('#signupPassword').value;
-
-//     if (localStorage.getItem(email)) {
-//         alert('Este e-mail já está sendo usado.');
-//         return;
-//     }
-
-//     const newUser = {
-//         name: name,
-//         email: email,
-//         password: password,
-//         tasks: []
-//     };
-
-//     localStorage.setItem(email, JSON.stringify(newUser));
-
-//     sessionStorage.setItem('emailSession', email);
-
-//     alert('Conta criada com sucesso!');
-//     window.location.href = 'task-manager.html';
-// }
-
-// const signIn = () => {
-//     const email = document.querySelector('#loginEmail').value;
-//     const password = document.querySelector('#loginPassword').value;
-
-//     if (!localStorage.getItem(email)) {
-//         alert('E-mail não cadastrado.');
-//         return;
-//     }
-
-//     const userData = JSON.parse(localStorage.getItem(email));
-//     if (userData.password !== password) {
-//         alert('Senha incorreta.');
-//         return;
-//     }
-
-//     sessionStorage.setItem('emailSession', email);
-
-//     window.location.href = 'task-manager.html';
-// }
-
-
-
-
-
-
-// #############################
-//          VALIDATION
-// #############################
-
-const validation = () => {
-    const name = document.querySelector('#signupName').value;
-    const email = document.querySelector('#signupEmail').value;
-    const password = document.querySelector('#signupPassword').value;
-}
-
 
 
 
@@ -187,31 +122,56 @@ const validation = () => {
 //             TASK
 // #############################
 
+const inputTitle = document.querySelector('#title-task');
+
+inputTitle.addEventListener('keyup', () => {
+    if (inputTitle.value.trim().length < 1) {
+        inputTitle.style.border = '1px solid red';
+        inputTitle.style.boxShadow = '0 0 5px red';        
+    } else {
+        inputTitle.style.border = '1px solid var(--verde-l)';
+        inputTitle.style.boxShadow = '0 0 10px var(--verde-l)';        
+    }
+})
+
 const createTask = () => {
 
     const emailSession = sessionStorage.getItem('emailSession');
     const userData = JSON.parse(localStorage.getItem(emailSession));
 
-    const title = document.querySelector('#title-task').value.trim();
+    const title = document.querySelector('#title-task');
     const startDate = document.querySelector('#start-date').value || getCurrentDate();
     const startTime = document.querySelector('#start-time').value || getCurrentTime();
     const endDate = document.querySelector('#end-date').value || getCurrentDate();
     const endTime = document.querySelector('#end-time').value || '23:59';
     const description = document.querySelector('#description').value.trim();
 
-    if (title === '') {
-        alert('O título é obrigatório.');
+    const feedback = document.querySelector('#feedback');
+
+    if (title.value.trim() === '') {
+        title.style.border = '1px solid red';
+        title.style.boxShadow = '0 0 5px red';
+        feedback.classList.remove('d-none');
+        feedback.classList.add('alert-danger');
+        feedback.innerHTML = 'O título é obrigatório.';
+        return;
+    }
+
+    if (invalidDateTime(startDate, startTime, endDate, endTime)) {        
+        feedback.classList.remove('d-none');
+        feedback.classList.add('alert-danger');
+        feedback.innerHTML = 'A data de início não pode ser posterior à data de término.';
         return;
     }
 
     const newTask = {
-        title,
+        title: title.value.trim(),
         startDate,
         startTime,
         endDate,
         endTime,
         description,
-        status: "Analisando",
+        status: 'Analisando',
         done: false,
     };
 
@@ -219,8 +179,13 @@ const createTask = () => {
     userData.tasks.push(newTask);
     localStorage.setItem(emailSession, JSON.stringify(userData));
 
-    location.reload();
-    alertDiv('Tarefa criada com sucesso', 'success')
+    feedback.classList.remove('d-none');
+    feedback.classList.add('alert-success');
+    feedback.innerHTML = 'Tarefa criada com sucesso.';
+
+    setTimeout(() => {
+        location.reload();
+    }, 2000);
 }
 
 const setCurrentTask = (id) => {
@@ -233,24 +198,45 @@ const updateTask = () => {
     const userData = JSON.parse(localStorage.getItem(emailSession));
     const index = sessionStorage.getItem('currentTask');
 
-    const title = document.querySelector('#title-task').value;
-    const startDate = document.querySelector('#start-date').value;
-    const startTime = document.querySelector('#start-time').value;
-    const endDate = document.querySelector('#end-date').value;
-    const endTime = document.querySelector('#end-time').value;
+    const title = document.querySelector('#title-task');
+    const startDate = document.querySelector('#start-date');
+    const startTime = document.querySelector('#start-time');
+    const endDate = document.querySelector('#end-date');
+    const endTime = document.querySelector('#end-time');
     const description = document.querySelector('#description').value;
 
-    if (title === '') {
-        alert('O título é obrigatório.');
+    const feedback = document.querySelector('#feedback');
+
+    if (title.value.trim() === '') {
+        title.style.border = '1px solid red';
+        title.style.boxShadow = '0 0 5px red';
+        feedback.classList.remove('d-none');
+        feedback.classList.add('alert-danger');
+        feedback.innerHTML = 'O título é obrigatório.';
+        return;
+    }
+
+    if (invalidDateTime(startDate.value, startTime.value, endDate.value, endTime.value)) {
+        startDate.style.border = '1px solid red';
+        startDate.style.boxShadow = '0 0 5px red';
+        startTime.style.border = '1px solid red';
+        startTime.style.boxShadow = '0 0 5px red';
+        endDate.style.border = '1px solid red';
+        endDate.style.boxShadow = '0 0 5px red';
+        endTime.style.border = '1px solid red';
+        endTime.style.boxShadow = '0 0 5px red';
+        feedback.classList.remove('d-none');
+        feedback.classList.add('alert-danger');
+        feedback.innerHTML = 'A data de início não pode ser posterior à data de término.';
         return;
     }
 
     const newTask = {
-        title: title,
-        startDate,
-        startTime,
-        endDate,
-        endTime,
+        title: title.value.trim(),
+        startDate: startDate.value,
+        startTime: startTime.value,
+        endDate: endDate.value,
+        endTime: endTime.value,
         description,
         status: 'Analisando',
         done: false,
@@ -260,10 +246,13 @@ const updateTask = () => {
 
     localStorage.setItem(emailSession, JSON.stringify(userData));
 
-    location.reload();
-    window.onload = function () {
-        alertDiv('Tarefa atualizada com sucesso', 'success');
-    };
+    feedback.classList.remove('d-none');
+    feedback.classList.add('alert-success');
+    feedback.innerHTML = 'Tarefa atualizada com sucesso.';
+
+    setTimeout(() => {
+        location.reload();
+    }, 2000);
 }
 
 const deleteTask = () => {
@@ -379,6 +368,19 @@ const getCurrentTime = () => {
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     return `${hours}:${minutes}`;
+}
+
+function invalidDateTime(startDate, startTime, endDate, endTime) {
+    const startDateTimeString = `${startDate}T${startTime}`;
+    const endDateTimeString = `${endDate}T${endTime}`;
+
+    const startDateObj = new Date(startDateTimeString);
+    const endDateObj = new Date(endDateTimeString);
+
+    if (startDateObj > endDateObj) {
+        return true;
+    }
+    return false;
 }
 
 
