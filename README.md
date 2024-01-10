@@ -15,6 +15,13 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 Este repositório contém a solução desenvolvida para o desafio proposto, onde foram cumpridas todas as especificações requeridas e ainda foi adicionado um filtro de tarefas e uma barra de pesquisa de tarefas ao sistema.
 
+<div align='center'>  
+
+![GIF](https://github.com/marina-barbosa/desafio-fast-track-ima-tech/blob/master/assets/Captura%20de%20tela%202024-01-10%20085209.png) 
+
+![GIF](https://github.com/marina-barbosa/desafio-fast-track-ima-tech/blob/master/assets/Captura%20de%20tela%202024-01-10%20085253.png) 
+</div>
+
 
 ## Descrição do Projeto
 
